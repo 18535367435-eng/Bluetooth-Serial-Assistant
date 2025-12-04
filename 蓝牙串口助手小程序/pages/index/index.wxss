@@ -1,0 +1,200 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  font-size: 28rpx;
+}
+
+.scrollarea {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.container {
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30rpx;
+  color: #333;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;
+  color: #333;
+}
+
+/* 蓝牙控制按钮区域 */
+.bluetooth-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.control-btn {
+  flex: 1;
+  min-width: 200rpx;
+  font-size: 28rpx;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  background-color: #07c160;
+  color: white;
+  border: none;
+}
+
+.control-btn.disabled {
+  background-color: #999;
+}
+
+/* 设备列表样式 */
+.device-list {
+  background-color: white;
+  border-radius: 10rpx;
+  padding: 20rpx;
+}
+
+.device-item {
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.device-item:last-child {
+  border-bottom: none;
+}
+
+.device-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.device-id {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+  word-break: break-all;
+}
+
+.device-rssi {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.no-device {
+  text-align: center;
+  color: #999;
+  padding: 30rpx;
+}
+
+/* 连接状态样式 */
+.connection-status {
+  background-color: white;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  min-height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  color: #07c160;
+}
+
+/* 特征值列表样式 */
+.characteristics-list {
+  background-color: white;
+  border-radius: 10rpx;
+  padding: 20rpx;
+}
+
+.characteristic-item {
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eee;
+  position: relative;
+}
+
+.characteristic-item:last-child {
+  border-bottom: none;
+}
+
+.characteristic-name {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+  word-break: break-all;
+}
+
+.characteristic-properties {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.selected-mark {
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #07c160;
+  font-size: 36rpx;
+}
+
+/* 发送数据区域样式 */
+.send-data-section {
+  background-color: white;
+  border-radius: 10rpx;
+  padding: 20rpx;
+}
+
+.data-input {
+  border: 1rpx solid #ddd;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  min-height: 100rpx;
+  word-break: break-all;
+}
+
+.send-btn {
+  background-color: #07c160;
+  color: white;
+  border: none;
+  border-radius: 8rpx;
+  margin-bottom: 20rpx;
+}
+
+.send-type {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.radio-group {
+  display: flex;
+  gap: 40rpx;
+}
+
+/* 接收数据区域样式 */
+.receive-data-area {
+  background-color: white;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  min-height: 200rpx;
+  max-height: 300rpx;
+}
+
+.receive-data {
+  font-size: 26rpx;
+  color: #333;
+  white-space: pre-wrap;
+  word-break: break-all;
+}

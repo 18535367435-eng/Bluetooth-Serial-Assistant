@@ -1,0 +1,63 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view class="title">蓝牙串口助手</view>
+    
+    <!-- 蓝牙控制区域 -->
+    <view class="bluetooth-section">
+      <button class="control-btn" bindtap="openBluetoothAdapter">初始化蓝牙</button>
+      <button class="control-btn" bindtap="startBluetoothDevicesDiscovery" wx:if="!isScanning">开始搜索</button>
+      <button class="control-btn disabled" wx:else>搜索中...</button>
+      <button class="control-btn" bindtap="stopBluetoothDevicesDiscovery" wx:if="isScanning">停止搜索</button>
+    </view>
+    
+    <!-- 设备列表 -->
+    <view class="section-title">蓝牙设备列表</view>
+    <view class="device-list">
+      <block wx:if="{{devices.length > 0}}">
+        <view class="device-item" wx:for="{{devices}}" wx:key="deviceId" bindtap="connectDevice" data-device-id="{{item.deviceId}}" data-device-name="{{item.name}}">
+          <view class="device-name">{{item.name || '未知设备'}}</view>
+          <view class="device-id">{{item.deviceId}}</view>
+          <view class="device-rssi">信号强度: {{item.RSSI}} dBm</view>
+        </view>
+      </block>
+      <view wx:else class="no-device">未发现设备</view>
+    </view>
+    
+    <!-- 连接状态 -->
+    <view class="section-title">连接状态</view>
+    <view class="connection-status">{{connectionStatus}}</view>
+    
+    <!-- 特征值列表 -->
+    <view class="section-title" wx:if="{{characteristics.length > 0}}">特征值列表</view>
+    <view class="characteristics-list" wx:if="{{characteristics.length > 0}}">
+      <block wx:for="{{characteristics}}" wx:key="uuid" wx:for-item="char">
+        <view class="characteristic-item" bindtap="selectCharacteristic" data-uuid="{{char.uuid}}" data-service-id="{{char.serviceId}}" wx:if="{{char.properties.write || char.properties.writeNoResponse}}">
+          <view class="characteristic-name">UUID: {{char.uuid}}</view>
+          <view class="characteristic-properties">可写: {{char.properties.write || char.properties.writeNoResponse ? '是' : '否'}}</view>
+          <view class="selected-mark" wx:if="{{selectedCharacteristic === char.uuid}}">✓</view>
+        </view>
+      </block>
+    </view>
+    
+    <!-- 发送数据区域 -->
+    <view class="section-title" wx:if="{{selectedCharacteristic}}">发送数据</view>
+    <view class="send-data-section" wx:if="{{selectedCharacteristic}}">
+      <input class="data-input" placeholder="请输入要发送的数据" value="{{sendData}}" bindinput="onSendDataInput" />
+      <button class="send-btn" bindtap="sendDataToDevice">发送数据</button>
+      <view class="send-type">
+        <text>发送类型:</text>
+        <radio-group class="radio-group" bindchange="onSendTypeChange">
+          <label><radio value="text" checked="{{sendType === 'text'}}" />文本</label>
+          <label><radio value="hex" checked="{{sendType === 'hex'}}" />十六进制</label>
+        </radio-group>
+      </view>
+    </view>
+    
+    <!-- 接收数据区域 -->
+    <view class="section-title">接收数据</view>
+    <scroll-view class="receive-data-area" scroll-y>
+      <text class="receive-data">{{receiveData}}</text>
+    </scroll-view>
+  </view>
+</scroll-view>
