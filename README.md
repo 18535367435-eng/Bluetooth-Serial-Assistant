@@ -9,13 +9,11 @@
 
 -   扫描并连接周边蓝牙SPP设备 / Scan and connect to nearby Bluetooth SPP devices
     
--   双向数据传输（支持文本/十六进制等常用格式） / Bidirectional data transmission (supports common formats such as text/hexadecimal)
+-   双向数据传输 / Bidirectional data transmission
     
 -   可自定义预设指令，方便快速发送 / Customizable preset commands for quick sending
     
 -   实时数据接收与日志记录 / Real-time data reception and log recording
-    
--   跨平台支持（Android/iOS 适配小程序运行环境） / Cross-platform support (Android/iOS compatible with mini-program runtime environment)
     
 
 ##  应用场景 / Application Scenarios
